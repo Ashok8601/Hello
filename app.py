@@ -30,12 +30,9 @@ def signup():
 
     return render_template('login.html')
 
-@app.route('/home')
+@app.route('/')
 def home():
-    if 'user' in session:
-        return render_template('home.html', email=session['user'])
-    return redirect(url_for('login'))
-
+    return render_template('home.html')
 @app.route('/admin')
 def show_users():
     conn = sqlite3.connect('fake.db')  # Replace with your .db name
