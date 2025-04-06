@@ -10,8 +10,6 @@ def get_db_connection():
     conn = sqlite3.connect('fake.db')
     conn.row_factory = sqlite3.Row
     return conn
-
-@app.route('/login', methods=['GET', 'POST'])
 @app.route('/sitemap.xml', methods=['GET'])
 def sitemap():
     pages = []
@@ -49,7 +47,7 @@ def sitemap():
 
     sitemap_xml += '</urlset>'
     return Response(sitemap_xml, mimetype='application/xml')
-    
+@app.route('/login', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         username = request.form['email']
